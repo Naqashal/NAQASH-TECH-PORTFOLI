@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAQASH TECH | VIP Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rogred: '#dc2626',
+                        rogdark: '#000000',
+                        rogcard: '#0a0a0a',
+                        rogborder: '#262626'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #000000; color: #f5f5f5; overflow-x: hidden; }
+        .glass { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(220, 38, 38, 0.2); }
+        .glow-red { box-shadow: 0 0 20px rgba(220, 38, 38, 0.35); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 3px; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-rogdark text-gray-100 antialiased selection:bg-rogred selection:text-white">
+
+    <!-- Top Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-rogborder px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <img id="navDp" src="https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg" alt="Naqash Tech" class="w-10 h-10 rounded-full border-2 border-rogred object-cover glow-red">
+            <div>
+                <h1 class="font-bold text-sm tracking-wider text-white">NAQASH TECH</h1>
+                <p class="text-[10px] text-rogred font-semibold tracking-widest uppercase">PRO DEVELOPER</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <div class="glass px-3 py-1 rounded-full text-xs font-medium text-gray-300 border border-rogborder flex items-center space-x-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+                <span>🔴 <span id="liveCount">1,425</span> Live</span>
+            </div>
+            <button onclick="toggleDrawer()" class="w-10 h-10 rounded-xl glass flex items-center justify-center text-rogred hover:bg-rogred hover:text-white transition duration-300">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Side Drawer -->
+    <div id="drawerOverlay" class="fixed inset-0 bg-black/80 z-50 hidden backdrop-blur-sm transition-opacity opacity-0" onclick="toggleDrawer()"></div>
+    <div id="sideDrawer" class="fixed top-0 right-0 bottom-0 w-80 bg-rogcard z-50 transform translate-x-full transition-transform duration-300 border-l border-rogborder p-5 flex flex-col justify-between shadow-2xl">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-rogborder">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-toolbox text-rogred"></i> VIP Tools Hub</h2>
+                <button onclick="toggleDrawer()" class="text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mt-6 space-y-3">
+                <a href="#" onclick="showToast('Opening Naqash Tech Tool...')" class="flex items-center space-x-3 p-3 rounded-xl glass hover:border-rogred transition border border-rogborder group">
+                    <div class="w-10 h-10 rounded-lg bg-rogred/20 flex items-center justify-center text-rogred group-hover:bg-rogred group-hover:text-white transition"><i class="fa-solid fa-code"></i></div>
+                    <div><h4 class="font-semibold text-sm text-white">NAQASH TECH TOOL</h4><p class="text-[11px] text-gray-400">All-in-one web utilities</p></div>
+                </a>
+                <a href="#" onclick="showToast('Opening Source Code Hub...')" class="flex items-center space-x-3 p-3 rounded-xl glass hover:border-rogred transition border border-rogborder group">
+                    <div class="w-10 h-10 rounded-lg bg-rogred/20 flex items-center justify-center text-rogred group-hover:bg-rogred group-hover:text-white transition"><i class="fa-solid fa-file-code"></i></div>
+                    <div><h4 class="font-semibold text-sm text-white">SOURCES CODE</h4><p class="text-[11px] text-gray-400">Ready-made project files</p></div>
+                </a>
+                <a href="#" onclick="showToast('Opening Premium Mod APKs...')" class="flex items-center space-x-3 p-3 rounded-xl glass hover:border-rogred transition border border-rogborder group">
+                    <div class="w-10 h-10 rounded-lg bg-rogred/20 flex items-center justify-center text-rogred group-hover:bg-rogred group-hover:text-white transition"><i class="fa-solid fa-gamepad"></i></div>
+                    <div><h4 class="font-semibold text-sm text-white">PREMIUM MOD APK</h4><p class="text-[11px] text-gray-400">Unlocked apps & games</p></div>
+                </a>
+                <a href="#" onclick="showToast('Opening Bug Bot System...')" class="flex items-center space-x-3 p-3 rounded-xl glass hover:border-rogred transition border border-rogborder group">
+                    <div class="w-10 h-10 rounded-lg bg-rogred/20 flex items-center justify-center text-rogred group-hover:bg-rogred group-hover:text-white transition"><i class="fa-solid fa-bug"></i></div>
+                    <div><h4 class="font-semibold text-sm text-white">BUG BOT</h4><p class="text-[11px] text-gray-400">Automated testing script</p></div>
+                </a>
+                <a href="#" onclick="showToast('Opening MD Mini Hub...')" class="flex items-center space-x-3 p-3 rounded-xl glass hover:border-rogred transition border border-rogborder group">
+                    <div class="w-10 h-10 rounded-lg bg-rogred/20 flex items-center justify-center text-rogred group-hover:bg-rogred group-hover:text-white transition"><i class="fa-solid fa-terminal"></i></div>
+                    <div><h4 class="font-semibold text-sm text-white">MD MINI</h4><p class="text-[11px] text-gray-400">Lightweight bot instance</p></div>
+                </a>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-500 pb-2">NAQASH.X.CYBER &bull; 2026</div>
+    </div>
+
+    <!-- Main Container Start -->
+    <main class="max-w-md mx-auto px-4 pt-24 pb-16 space-y-8 animate-fade-in">
+
+        <!-- Hero Section -->
+        <section class="text-center space-y-4">
+            <div class="inline-block px-4 py-1.5 rounded-full glass border border-rogred/40 text-xs font-semibold text-rogred tracking-wide uppercase glow-red">
+                ⚡ AVAILABLE FOR WORK
+            </div>
+            <div class="relative w-36 h-36 mx-auto">
+                <div class="absolute inset-0 rounded-full border-2 border-dashed border-rogred animate-spin" style="animation-duration: 15s;"></div>
+                <img id="heroDp" src="https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg" alt="Naqash Ali" class="w-full h-full rounded-full object-cover p-1.5 relative z-10 glow-red">
+            </div>
+            <div>
+                <h2 class="text-2xl font-extrabold text-white tracking-wide">I'M NAQASH ALI</h2>
+                <p id="typedText" class="text-rogred font-medium text-sm mt-1 h-6">Professional Web Developer</p>
+            </div>
+            <div class="flex justify-center space-x-3 pt-2">
+                <a href="#contact" class="flex-1 max-w-[140px] py-2.5 rounded-xl bg-rogred text-white font-semibold text-sm shadow-lg shadow-rogred/40 hover:bg-red-700 transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-paper-plane"></i> <span>Contact</span>
+                </a>
+                <a href="#projects" class="flex-1 max-w-[140px] py-2.5 rounded-xl glass border border-rogred/40 text-white font-semibold text-sm hover:bg-rogred/20 transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-folder-open"></i> <span>Work</span>
+                </a>
+            </div>
+        </section>
+        <!-- About Me & Skills Section -->
+        <section class="glass p-5 rounded-2xl border border-rogborder space-y-4">
+            <div class="flex items-center space-x-2 border-b border-rogborder pb-3">
+                <i class="fa-solid fa-user-gear text-rogred"></i>
+                <h3 class="font-bold text-white text-base">About Me & Skills</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="bg-black/40 p-2.5 rounded-xl border border-rogborder"><span class="text-gray-400 block text-xs">NAME</span><strong class="text-white">Naqash Ali</strong></div>
+                <div class="bg-black/40 p-2.5 rounded-xl border border-rogborder"><span class="text-gray-400 block text-xs">AGE</span><strong class="text-white">21 Years</strong></div>
+                <div class="bg-black/40 p-2.5 rounded-xl border border-rogborder"><span class="text-gray-400 block text-xs">LOCATION</span><strong class="text-white">Attock City Mirza</strong></div>
+                <div class="bg-black/40 p-2.5 rounded-xl border border-rogborder"><span class="text-gray-400 block text-xs">EMAIL</span><strong class="text-white truncate block">naqash78780@gmail.com</strong></div>
+            </div>
+
+            <div class="space-y-3 pt-2">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-400">Core Expertise</h4>
+                <div class="space-y-2">
+                    <div>
+                        <div class="flex justify-between text-xs mb-1"><span class="text-gray-300">HTML / CSS / JavaScript</span><span class="text-rogred font-bold">95%</span></div>
+                        <div class="w-full bg-black h-2 rounded-full overflow-hidden border border-rogborder"><div class="bg-rogred h-full rounded-full" style="width: 95%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1"><span class="text-gray-300">Python Programming</span><span class="text-rogred font-bold">88%</span></div>
+                        <div class="w-full bg-black h-2 rounded-full overflow-hidden border border-rogborder"><div class="bg-rogred h-full rounded-full" style="width: 88%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1"><span class="text-gray-300">Java & Backend logic</span><span class="text-rogred font-bold">82%</span></div>
+                        <div class="w-full bg-black h-2 rounded-full overflow-hidden border border-rogborder"><div class="bg-rogred h-full rounded-full" style="width: 82%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIP Journey Timeline -->
+        <section class="glass p-5 rounded-2xl border border-rogborder space-y-4">
+            <div class="flex items-center space-x-2 border-b border-rogborder pb-3">
+                <i class="fa-solid fa-timeline text-rogred"></i>
+                <h3 class="font-bold text-white text-base">VIP Journey Timeline</h3>
+            </div>
+            <div class="space-y-4 relative border-l-2 border-rogred/40 ml-3 pl-4">
+                <div class="relative">
+                    <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-rogred ring-4 ring-black"></span>
+                    <span class="text-xs font-bold text-rogred">2023</span>
+                    <h4 class="text-sm font-semibold text-white">Foundation & Basics</h4>
+                    <p class="text-xs text-gray-400 mt-0.5">Started coding fundamentals, basic website templates, and script automation.</p>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-rogred ring-4 ring-black"></span>
+                    <span class="text-xs font-bold text-rogred">2024</span>
+                    <h4 class="text-sm font-semibold text-white">Skill Upgrade & Custom Apps</h4>
+                    <p class="text-xs text-gray-400 mt-0.5">Built dynamic web dashboards, tool hubs, and advanced front-end layouts.</p>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-rogred ring-4 ring-black"></span>
+                    <span class="text-xs font-bold text-rogred">2025 - Present</span>
+                    <h4 class="text-sm font-semibold text-white">Pro Level VIP Master</h4>
+                    <p class="text-xs text-gray-400 mt-0.5">Mastered full-stack development, cyber UI aesthetics, and enterprise client projects under NAQASH TECH.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured VIP Tools -->
+        <section id="projects" class="space-y-3">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-white text-base flex items-center gap-2"><i class="fa-solid fa-star text-rogred"></i> Featured VIP Tools</h3>
+                <span class="text-xs text-rogred font-medium">Dynamic Hub</span>
+            </div>
+            <div id="dynamicToolsContainer" class="space-y-3">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+        <!-- Dual Gallery Section -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-white text-base flex items-center gap-2"><i class="fa-solid fa-images text-rogred"></i> Photo Gallery</h3>
+                <span class="text-xs text-gray-400">Type 1 & 2</span>
+            </div>
+
+            <!-- Type 1: Grid -->
+            <div id="dynamicGridGallery" class="grid grid-cols-2 gap-3"></div>
+
+            <!-- Type 2: Instagram Style Horizontal Feed -->
+            <div class="pt-2">
+                <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Instagram Feed Mode</h4>
+                <div id="dynamicInstaGallery" class="flex space-x-3 overflow-x-auto pb-2 scrollbar-none"></div>
+            </div>
+        </section>
+
+        <!-- Real Customer Reviews Section -->
+        <section class="space-y-3">
+            <h3 class="font-bold text-white text-base flex items-center gap-2"><i class="fa-solid fa-comments text-rogred"></i> Real Customer Reviews</h3>
+            <div class="space-y-3">
+                <div class="glass p-3 rounded-xl border border-rogborder space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-7 h-7 rounded-full bg-rogred/30 flex items-center justify-center font-bold text-xs text-rogred">JS</div>
+                            <div><h5 class="text-xs font-bold text-white">Syed Jarar Shah</h5><span class="text-[10px] text-gray-400">CEO / Partner</span></div>
+                        </div>
+                        <div class="text-rogred text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <p class="text-xs text-gray-300">"Naqash is an exceptional developer. His execution on our web branding and cyberpunk dashboards is top-notch!"</p>
+                </div>
+                <div class="glass p-3 rounded-xl border border-rogborder space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-7 h-7 rounded-full bg-rogred/30 flex items-center justify-center font-bold text-xs text-rogred">SH</div>
+                            <div><h5 class="text-xs font-bold text-white">Shaherr</h5><span class="text-[10px] text-gray-400">Trader & Client</span></div>
+                        </div>
+                        <div class="text-rogred text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <p class="text-xs text-gray-300">"Extremely clean UI design and fast delivery. The editorial layout and tools created for us are phenomenal."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="glass p-5 rounded-2xl border border-rogborder space-y-4">
+            <div class="flex items-center space-x-2 border-b border-rogborder pb-3">
+                <i class="fa-solid fa-envelope text-rogred"></i>
+                <h3 class="font-bold text-white text-base">Get In Touch</h3>
+            </div>
+            <form onsubmit="handleContact(event)" class="space-y-3">
+                <input type="text" placeholder="Your Name" required class="w-full bg-black/60 border border-rogborder rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-rogred">
+                <input type="email" placeholder="Your Email Address" required class="w-full bg-black/60 border border-rogborder rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-rogred">
+                <textarea rows="3" placeholder="Your Message..." required class="w-full bg-black/60 border border-rogborder rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-rogred"></textarea>
+                <button type="submit" class="w-full py-2.5 bg-rogred text-white text-xs font-semibold rounded-xl shadow-lg shadow-rogred/40 hover:bg-red-700 transition">Send Message</button>
+            </form>
+
+            <div class="grid grid-cols-4 gap-2 pt-2">
+                <a href="https://whatsapp.com/channel/0029VbE06sD2v1IrCmKZzg2v" target="_blank" class="py-2.5 rounded-xl glass border border-rogborder flex items-center justify-center text-green-500 hover:bg-green-500/20 transition"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                <a href="https://tiktok.com/@itskashieditz333" target="_blank" class="py-2.5 rounded-xl glass border border-rogborder flex items-center justify-center text-white hover:bg-white/20 transition"><i class="fa-brands fa-tiktok text-lg"></i></a>
+                <a href="https://www.instagram.com/naqash_tech" target="_blank" class="py-2.5 rounded-xl glass border border-rogborder flex items-center justify-center text-pink-500 hover:bg-pink-500/20 transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="https://t.me/naqashtech804" target="_blank" class="py-2.5 rounded-xl glass border border-rogborder flex items-center justify-center text-blue-400 hover:bg-blue-400/20 transition"><i class="fa-brands fa-telegram text-lg"></i></a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center pt-4 pb-2 border-t border-rogborder space-y-1">
+            <p class="text-xs text-gray-400 cursor-pointer" ondblclick="triggerAdmin()">© 2026 NAQASH TECH. All Rights Reserved.</p>
+            <p class="text-[10px] text-rogred font-semibold uppercase tracking-widest">DEVELOPED BY NAQASH</p>
+        </footer>
+    </main>
+
+    <!-- ADMIN MODAL -->
+    <div id="adminModal" class="fixed inset-0 bg-black/90 z-50 hidden backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass w-full max-w-md rounded-2xl border border-rogred p-5 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-rogborder pb-3">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-lock text-rogred"></i> MR_NAQASH ADMIN PANEL</h3>
+                <button onclick="closeAdmin()" class="text-gray-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block text-gray-400 mb-1">Profile DP Image URL:</label>
+                    <input type="text" id="adminDpInput" class="w-full bg-black/60 border border-rogborder rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rogred">
+                </div>
+                <div>
+                    <label class="block text-gray-400 mb-1">Gallery Photo URLs (Comma Separated - 4 Photos):</label>
+                    <textarea id="adminGalleryInput" rows="3" class="w-full bg-black/60 border border-rogborder rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rogred"></textarea>
+                </div>
+                <div class="flex space-x-2 pt-2">
+                    <button onclick="saveAdminChanges()" class="flex-1 py-2.5 bg-rogred text-white font-semibold rounded-xl hover:bg-red-700 transition">Save & Apply</button>
+                    <button onclick="resetDefaultData()" class="py-2.5 px-3 bg-gray-800 text-gray-300 font-semibold rounded-xl hover:bg-gray-700 transition">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 glass px-4 py-2.5 rounded-xl border border-rogred text-white text-xs font-semibold z-50 hidden opacity-0 transition-opacity duration-300 shadow-2xl flex items-center space-x-2">
+        <i class="fa-solid fa-triangle-exclamation text-rogred"></i>
+        <span id="toastMsg">Notification message</span>
+    </div>
+
+    <!-- PWA Banner -->
+    <div id="pwaBanner" class="fixed bottom-4 left-4 right-4 max-w-md mx-auto glass p-3 rounded-2xl border border-rogred z-40 hidden flex items-center justify-between shadow-2xl">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-rogred/20 flex items-center justify-center text-rogred"><i class="fa-solid fa-download"></i></div>
+            <div><h4 class="text-xs font-bold text-white">Install NAQASH TECH App</h4><p class="text-[10px] text-gray-400">Get instant access & fast speed.</p></div>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="installPWA()" class="px-3 py-1.5 bg-rogred text-white text-xs font-semibold rounded-lg">Install</button>
+            <button onclick="closePWA()" class="px-2 py-1.5 text-gray-400 text-xs"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Core Logic & Script -->
+    <script>
+        const defaultData = {
+            dp: "https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg",
+            gallery: [
+                "https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg",
+                "https://i.ibb.co/Q3yTZLWJ/file-000000004c98820ba4dc07e5aa98bbf2.png",
+                "https://i.ibb.co/Q3gTwnCZ/1791526994057.jpg",
+                "https://i.ibb.co/Q3yTZLWJ/file-000000004c98820ba4dc07e5aa98bbf2.png"
+            ],
+            tools: [
+                { name: "Naqash Tool v4.2", desc: "All-in-one utility hub with fast access.", tag: "Active" },
+                { name: "VIP Source Codes", desc: "Clean HTML/JS templates for developers.", tag: "Popular" },
+                { name: "Premium Mod Hub", desc: "Unlocked apps & video editing tools.", tag: "Updated" }
+            ]
+        };
+
+        function getAppData() {
+            let saved = localStorage.getItem('naqash_portfolio_data');
+            return saved ? JSON.parse(saved) : defaultData;
+        }
+
+        function renderApp() {
+            let data = getAppData();
+            document.getElementById('navDp').src = data.dp;
+            document.getElementById('heroDp').src = data.dp;
+
+            let toolsHtml = '';
+            data.tools.forEach(t => {
+                toolsHtml += `
+                <div class="glass rounded-2xl border border-rogborder p-3 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <img src="${data.dp}" class="w-8 h-8 rounded-full border border-rogred object-cover">
+                            <div><h5 class="text-xs font-bold text-white">NAQASH TECH</h5><span class="text-[10px] text-gray-400">Official Toolkit</span></div>
+                        </div>
+                        <span class="text-[10px] bg-rogred/20 text-rogred px-2 py-0.5 rounded-full font-semibold border border-rogred/30">${t.tag}</span>
+                    </div>
+                    <div class="bg-black/60 p-3 rounded-xl border border-rogborder flex items-center justify-between">
+                        <div><h4 class="text-sm font-bold text-white">${t.name}</h4><p class="text-xs text-gray-400">${t.desc}</p></div>
+                        <button onclick="showToast('Launching ${t.name}...')" class="px-3 py-1.5 bg-rogred text-white text-xs font-semibold rounded-lg hover:bg-red-700 transition">Launch</button>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('dynamicToolsContainer').innerHTML = toolsHtml;
+
+            let gridHtml = '';
+            data.gallery.forEach((img, idx) => {
+                gridHtml += `
+                <div class="h-36 rounded-xl overflow-hidden border border-rogborder glass group relative">
+                    <img src="${img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-2"><span class="text-[10px] font-semibold text-white">#${idx+1} VIP PHOTO</span></div>
+                </div>`;
+            });
+            document.getElementById('dynamicGridGallery').innerHTML = gridHtml;
+
+            let instaHtml = '';
+            data.gallery.forEach((img, idx) => {
+                instaHtml += `
+                <div class="min-w-[220px] glass rounded-xl border border-rogborder p-2 space-y-2">
+                    <div class="flex items-center space-x-2"><img src="${data.dp}" class="w-6 h-6 rounded-full"><span class="text-xs font-bold text-white">naqash_tech</span></div>
+                    <div class="h-32 rounded-lg overflow-hidden"><img src="${img}" class="w-full h-full object-cover"></div>
+                    <div class="flex justify-between text-xs text-gray-400 px-1"><span><i class="fa-solid fa-heart text-rogred"></i> 1.${idx+2}k</span><span><i class="fa-solid fa-comment"></i> ${idx+45}</span></div>
+                </div>`;
+            });
+            document.getElementById('dynamicInstaGallery').innerHTML = instaHtml;
+        }
+
+        document.addEventListener("DOMContentLoaded", renderApp);
+
+        function triggerAdmin() {
+            let pass = prompt("Enter Admin Password (naqash2026):");
+            if (pass === "naqash2026") {
+                let data = getAppData();
+                document.getElementById('adminDpInput').value = data.dp;
+                document.getElementById('adminGalleryInput').value = data.gallery.join(", ");
+                document.getElementById('adminModal').classList.remove('hidden');
+                showToast("Admin Access Granted!");
+            } else if (pass !== null) {
+                showToast("Incorrect Password!");
+            }
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function saveAdminChanges() {
+            let newDp = document.getElementById('adminDpInput').value.trim();
+            let galleryRaw = document.getElementById('adminGalleryInput').value.trim();
+            
+            if(newDp && galleryRaw) {
+                let galleryArr = galleryRaw.split(',').map(s => s.trim());
+                let data = getAppData();
+                data.dp = newDp;
+                data.gallery = galleryArr;
+                
+                localStorage.setItem('naqash_portfolio_data', JSON.stringify(data));
+                renderApp();
+                closeAdmin();
+                showToast("Portfolio Updated Successfully!");
+            } else {
+                alert("Please fill out all fields correctly!");
+            }
+        }
+
+        function resetDefaultData() {
+            if(confirm("Reset to default settings?")) {
+                localStorage.removeItem('naqash_portfolio_data');
+                renderApp();
+                closeAdmin();
+                showToast("Reset to Default!");
+            }
+        }
+
+        function toggleDrawer() {
+            const drawer = document.getElementById('sideDrawer');
+            const overlay = document.getElementById('drawerOverlay');
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.remove('opacity-0'), 10);
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 3000);
+        }
+
+        const roles = ["Professional Web Developer", "Video Editor & Designer", "Cyber Security Enthusiast"];
+        let roleIndex = 0, charIndex = 0, isDeleting = false;
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            const typedText = document.getElementById('typedText');
+            if (isDeleting) {
+                typedText.innerText = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedText.innerText = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                setTimeout(typeEffect, isDeleting ? 50 : 100);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        function handleContact(e) {
+            e.preventDefault();
+            showToast("Message sent successfully! Naqash will reach out soon.");
+            e.target.reset();
+        }
+
+        setTimeout(() => {
+            if(!localStorage.getItem('pwaClosed')) {
+                document.getElementById('pwaBanner').classList.remove('hidden');
+            }
+        }, 2000);
+        function closePWA() {
+            document.getElementById('pwaBanner').classList.add('hidden');
+            localStorage.setItem('pwaClosed', 'true');
+        }
+        function installPWA() {
+            showToast("Installing NAQASH TECH App...");
+            closePWA();
+        }
+
+        let count = 1425;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 3) - 1;
+            document.getElementById('liveCount').innerText = count.toLocaleString();
+        }, 5000);
+    </script>
+</body>
+</html>
